@@ -1,3 +1,4 @@
+
 //Author = Anirudh Srikanth (yeetholmes619) [B20CS006]
 
 #include<bits/stdc++.h>
@@ -198,18 +199,6 @@ long long gcd_extended(long long a, long long b, long long &x, long long &y) {
     return a1;
 }
 
-long long power(long long a, long long b){
-        if(b == 0) return 1LL;
-        if(b == 1) return a;
-        long long ans;
-        while(b > 0){
-                if(b%2 == 1) ans *= a;
-                a *= a;
-                b /=2;
-        }
-        return ans;
-}
-
 long long gcd(long long a, long long b){
         if(!b) return a;
         while(1){
@@ -225,41 +214,6 @@ long long gcd(long long a, long long b){
 double log(double a, int b){return log(a)/log(b);}
 
 long long mid(long long a, long long b) {return (a+b)/2;}
-
-class Node{
-        public:
-            int data;
-            Node* right;
-            Node* left;
-            Node (int data){
-                    this->data = data;
-                    this->right = NULL;
-                    this->left = NULL;
-            }
-};
-
-Node* insert(Node* root, int d){
-        Node* carry = new Node(d);
-        if(root == NULL) return carry;
-        Node* temp = root;
-        while(1){
-                if(d > temp->data){
-                        if(temp->right == NULL) {
-                                temp->right = carry;
-                                break;
-                        }
-                        else temp = temp->right;
-                }
-                else if(d <= temp->data){
-                        if(temp->left == NULL) {
-                                temp->left = carry;
-                                break;
-                        }
-                        else temp = temp->left;
-                }
-        }
-        return root;
-}
 
 ll checkdigits(ll num) {
 	ll digits = 0;
