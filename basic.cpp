@@ -3,7 +3,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define RESET   "\033[0m"
-#define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
+#define BR   "\033[1m\033[31m"      /* Bold Red */
+#define BG   "\033[1m\033[32m"      /* Bold Green */
+#define BB    "\033[1m\033[34m"      /* Bold Blue */
 #define ll long long
 #define ld long double
 #define INF 1000000007
@@ -14,10 +16,20 @@ using namespace std;
 #define pb push_back
 #define pf push_front
 #define cinarr(a) for(auto &zz:a)cin>>zz
+#define mp make_pair
 #define allvec(v) v.begin(), v.end()
 #define vstr vector<string>
 #define vll vector<ll>
 #define vint vector<int>
+/**
+ * I/O
+ **/
+using namespace std;
+#define int long long
+#define output(value) cout << value << endl
+#define error(errorString) cout << BR << errorString << RESET<< "\n"
+#define info(infoString) cout << BB << infoString << RESET << "\n"
+#define success(successString) cout << BB << successString << RESET << "\n"
 #define allarr(a,n) a, a+n
 #define MOD 1000000007
 // precedence order :- double > float > long long int > long int > int > char
@@ -33,8 +45,10 @@ using namespace std;
 //you would do it in code, go step by step, in each step try to be concious of what you want to do
 //and once you have done so, review through and remember what data structure would be perfect
 //when we pass an array in a function the pointer is passed but when we pass a vector, a copy is passed
-
-using namespace std;
+void debug(vector<int> v){
+        for(auto t: v) error(t<<" ");
+        cerr<<"\n";
+}
 
 void take(){
 }
@@ -44,13 +58,13 @@ void solve(){
 }
 
 
-int main() {
+int32_t main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 	ll t = 1;
 	cin >> t;
 	fuu(i, t) {
-		cout << "Case #" << i << ": ";
+		//cout << "Case #" << i << ": ";
 		solve();
 	}
 }

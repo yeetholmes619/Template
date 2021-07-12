@@ -1,10 +1,11 @@
-
 //Author = Anirudh Srikanth (yeetholmes619) [B20CS006]
 
 #include<bits/stdc++.h>
 using namespace std;
 #define RESET   "\033[0m"
-#define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
+#define BR   "\033[1m\033[31m"      /* Bold Red */
+#define BG   "\033[1m\033[32m"      /* Bold Green */
+#define BB    "\033[1m\033[34m"      /* Bold Blue */
 #define ll long long
 #define ld long double
 #define INF 1000000007
@@ -19,6 +20,15 @@ using namespace std;
 #define vstr vector<string>
 #define vll vector<ll>
 #define vint vector<int>
+/**
+ * I/O
+ **/
+using namespace std;
+#define int long long
+#define output(value) cout << value << endl
+#define error(errorString) cout << BR << errorString << RESET
+#define info(infoString) cout << CYAN << infoString << RESET << endl
+#define success(successString) cout << GREEN << successString << RESET << endl
 #define allarr(a,n) a, a+n
 #define MOD 1000000007
 // precedence order :- double > float > long long int > long int > int > char
@@ -94,9 +104,10 @@ long long power_mod(long long a, long long b,long long m){
         }
         return ans;
 }
-
-long long mod_inv_prime(long long a, long long p){
-        return power_mod(a,p-2,p);
+ll modInverse(ll a, ll m){
+    for (ll x = 1; x < m; x++)
+        if (((a%m) * (x%m)) % m == 1)
+            return x;
 }
 //Miller Rabin start
 using u64 = uint64_t;

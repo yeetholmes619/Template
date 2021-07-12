@@ -3,7 +3,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define RESET   "\033[0m"
-#define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
+#define BR   "\033[1m\033[31m"      /* Bold Red */
+#define BG   "\033[1m\033[32m"      /* Bold Green */
+#define BB    "\033[1m\033[34m"      /* Bold Blue */
 #define ll long long
 #define ld long double
 #define INF 1000000007
