@@ -43,7 +43,7 @@ class Graph{
         map<int,bool> visited;
         map<int,int> color;
 
-        void isBipartite(int a = 1);
+        bool isBipartite(int a);
 
         void addEdge(int f, int t);
 
@@ -52,8 +52,14 @@ class Graph{
         void bfs(int b);
 };
 
+
 void Graph:: addEdge(int f, int t){
         adj[f].pb(t);
+        visited[f] = false;
+        visited[t] = false;
+
+        color[f] = -1;
+        color[t] = -1;
         return;
 }
 
@@ -68,8 +74,9 @@ void Graph::dfs(int a){
 }
 
 void Graph::bfs(int b){
+
         queue<int> q;
-        for(auto &t: visited) t.second=false;
+        for(auto &t: visited) t.second = false;
         visited[b] = true;
         //cout<<b<<" ";
         q.push(b);
@@ -87,19 +94,22 @@ void Graph::bfs(int b){
         return;
 }
 
-Graph::bool isBipartite(int a = 1){
+bool Graph:: isBipartite(int a = 1){
+                for(auto &t: visited) t.second = false;
                 queue<int> q;
                 q.push(a);
                 color[a] = 1;
+                visited[a] = true;
                 while(q.size() != 0){
                         int last = q.front();
                         q.pop();
-                        visited[last] = true;
                         for(auto t: adj[last]){
-                                assert(color[last] != -1);
                                 if(color[t] == -1) color[t] = color[last]==1?0:1;
                                 else if(color[t] == color[last]) return false;
-                                if(visited[t] != true) q.push(t);
+                                if(visited[t] != true){
+                                        visited[t] = true;
+                                        q.push(t);
+                                }
                         }
                 }
 
