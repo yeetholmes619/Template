@@ -2,9 +2,9 @@
 
 #include<bits/stdc++.h>
 #define curtime             chrono::high_resolution_clock::now()
-#define timedif(start,end)  chrono::duration_cast<chrono::nanoseconds>(end - start).count()
 #pragma GCC optimize("Ofast")
 #pragma GCC target("avx,avx2,fma")
+#define timedif(start,end)  chrono::duration_cast<chrono::nanoseconds>(end - start).count()
 using namespace std;
 #define RESET   "\033[0m"
 #define BR   "\033[1m\033[31m"      /* Bold Red */
@@ -15,6 +15,14 @@ using namespace std;
 #define INF 1000000007
 #define pb push_back
 #define pf push_front
+#define fu(i,n) for(int i = 0; i < n; i++)
+#define fu1(i,n) for(int i = 1; i <= n; i++)
+#define fd(i,n) for(int i = n-1; i > -1; i--)
+#define fd1(i,n) for(int i = n ; i >= 1; i--)
+#define vi vector<int>
+#define vs vector<string>
+#define pi pair<int,int>
+#define umap unordered_map
 #define cinarr(a) for(auto &zz:a)cin>>zz
 #define mp make_pair
 #define allvec(v) v.begin(), v.end()
@@ -22,7 +30,7 @@ using namespace std;
  * I/O
  **/
 #define int long long
-#define output(value) cout << value << endl
+#define output(value) cout << value << "\n"
 #define error(errorString) cout << BR << errorString << RESET<< "\n"
 #define info(infoString) cout << BB << infoString << RESET << "\n"
 #define success(successString) cout << BB << successString << RESET << "\n"
@@ -41,11 +49,54 @@ using namespace std;
 //you would do it in code, go step by step, in each step try to be concious of what you want to do
 //and once you have done so, review through and remember what data structure would be perfect
 //when we pass an array in a function the pointer is passed but when we pass a vector, a copy is passed
-void debug(vector<int> v){
-        for(auto t: v) cerr<<BR<<t<<" "<<RESET;
-        cerr<<"\n";
+template<class T>
+void take(vector<T> &v, int &n){
+        cin>>n;
+        v.resize(n);
+        cinarr(v);
+}
+template<class T>
+void take(vector<vector<T>> &v, int &n, int &m ){
+        cin>>n>>m;
+        v.resize(n,vector<T>(m));
+        for(int i =0 ;i < n; i++){
+                for(int j = 0; j < m; j++){
+                        cin>>v[i][j];
+                }
+        }
 }
 
+//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\DEBUG/\/\/\/\/\/\/\/\/\/\/\/\///\/\/
+void __print(long x) {cerr << x;}
+void __print(long long x) {cerr << x;}
+void __print(unsigned x) {cerr << x;}
+void __print(unsigned long x) {cerr << x;}
+void __print(unsigned long long x) {cerr << x;}
+void __print(float x) {cerr << x;}
+void __print(double x) {cerr << x;}
+void __print(long double x) {cerr << x;}
+void __print(char x) {cerr << '\'' << x << '\'';}
+void __print(const char *x) {cerr << '\"' << x << '\"';}
+void __print(const string &x) {cerr << '\"' << x << '\"';}
+void __print(bool x) {cerr << (x ? "true" : "false");}
+
+template<typename T, typename V>
+void __print(const pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}
+template<typename T>
+void __print(const T &x) {int f = 0; cerr << '{'; for (auto &i: x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}
+void _print() {cerr << "]\n"<<RESET;}
+template <typename T, typename... V>
+void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}
+#ifdef DEBUG
+#define debug(x...) cerr <<BR<< "[" << #x << "] = ["; _print(x)
+#else
+#define debug(x...)
+#endif
+
+//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\///\/\/\/\/\/\/
+//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\GLOBAL VARIABLES/\/\/\/\/\/\/\/\/\/\/\/\///\/\/
+
+//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\///\/\/\/\/\/\/
 void take(){
 }
 
@@ -60,7 +111,7 @@ int32_t main() {
     auto time0 = curtime;
 	ll t = 1;
 	cin >> t;
-	for(int i = 0 ; i < t; i++) {
+	for(int i = 1 ; i <= t; i++) {
 		//cout << "Case #" << i << ": ";
 		solve();
 	}
