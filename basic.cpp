@@ -134,14 +134,6 @@ void solve(){
 
 
 int32_t main() {
-    fup(i,1,4){
-            cout<<i<<"\n";
-    }
-    cout<<"------\n";
-    fu(i,5){
-            cout<<i<<"\n";
-    }
-    cout<<"------\n";
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     auto time0 = curtime;
