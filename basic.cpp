@@ -16,12 +16,26 @@ using namespace std;
 #define pb push_back
 #define pf push_front
 #define fu(i,n) for(int i = 0; i < n; i++)
+#define fup(i,a,b) for(int i = a; i <= b; i++)
 #define fu1(i,n) for(int i = 1; i <= n; i++)
 #define fd(i,n) for(int i = n-1; i > -1; i--)
 #define fd1(i,n) for(int i = n ; i >= 1; i--)
+#define fdo(i,a,b) for(int i = a; i >= b; i--)
 #define vi vector<int>
 #define vs vector<string>
-#define pi pair<int,int>
+#define pii pair<int,int>
+#define mii map<int,int>
+#define y0 sdkfaslhagaklsldk
+#define y1 aasdfasdfasdf
+#define yn askfhwqriuperikldjk
+#define j1 assdgsdgasghsf
+#define tm sdfjahlfasfh
+#define lr asgasgash
+#define norm asdfasdgasdgsd
+#define left asdgashgrketwjklrej
+#define have adsgagshdshfhds
+#define ends asdgahhfdsfshdshfd
+#define prev asdgSHJsfgsdfhdsh
 #define umap unordered_map
 #define cinarr(a) for(auto &zz:a)cin>>zz
 #define mp make_pair
@@ -42,7 +56,6 @@ using namespace std;
 // for single arrays declare them as long long int
 //overflow must be taken care of!! use strings when big
 //	0 < |int| < 1e9
-//	0 < |long int| < 1e12
 //	0 < |long long int| < 1e18
 //when you are working with stacks, remember to take care of stacks of 0 size
 //when you see a problem, and you know how you would tackle it in the real world, but don't know how
@@ -65,7 +78,22 @@ void take(vector<vector<T>> &v, int &n, int &m ){
                 }
         }
 }
-
+template<typename T1, typename T2> // cin >> pair<T1, T2>
+istream& operator>>(istream &istream, pair<T1, T2> &p) { return (istream >> p.first >> p.second); }
+ 
+template<typename T> // cin >> vector<T>
+istream& operator>>(istream &istream, vector<T> &v)
+{
+	for (auto &it : v)
+		cin >> it;
+	return istream;
+}
+ 
+template<typename T1, typename T2> // cout << pair<T1, T2>
+ostream& operator<<(ostream &ostream, const pair<T1, T2> &p) { return (ostream << p.first << " " << p.second); }
+template<typename T> // cout << vector<T>
+ostream& operator<<(ostream &ostream, const vector<T> &c) { for (auto &it : c) cout << it << " "; return ostream; }
+ 
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\DEBUG/\/\/\/\/\/\/\/\/\/\/\/\///\/\/
 void __print(long x) {cerr << x;}
 void __print(long long x) {cerr << x;}
@@ -106,6 +134,14 @@ void solve(){
 
 
 int32_t main() {
+    fup(i,1,4){
+            cout<<i<<"\n";
+    }
+    cout<<"------\n";
+    fu(i,5){
+            cout<<i<<"\n";
+    }
+    cout<<"------\n";
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     auto time0 = curtime;
