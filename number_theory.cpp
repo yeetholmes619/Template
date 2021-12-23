@@ -44,6 +44,17 @@ using namespace std;
 //you would do it in code, go step by step, in each step try to be concious of what you want to do
 //and once you have done so, review through and remember what data structure would be perfect
 //when we pass an array in a function the pointer is passed but when we pass a vector, a copy is passed
+vector<int> mixedbase(vector<int> base, int num){
+        vector<int> ans;
+       while(num){
+               ans.push_back(num%(base.back()+1));
+               num /= (base.back()+1);
+               base.pop_back();
+       }
+       reverse(allvec(ans));
+        return ans;
+}
+
 vector<bool> sieve(long long n){
         vector<bool> prime(n+1,true);
         prime[0] = prime[1] = false;

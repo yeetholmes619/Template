@@ -15,12 +15,8 @@ using namespace std;
 #define INF 1000000007
 #define pb push_back
 #define pf push_front
-#define fu(i,n) for(int i = 0; i < n; i++)
-#define fup(i,a,b) for(int i = a; i <= b; i++)
-#define fu1(i,n) for(int i = 1; i <= n; i++)
-#define fd(i,n) for(int i = n-1; i > -1; i--)
-#define fd1(i,n) for(int i = n ; i >= 1; i--)
-#define fdo(i,a,b) for(int i = a; i >= b; i--)
+#define fu(i,a,b) for(int i = a; i <= b; i++)
+#define fd(i,a,b) for(int i = a; i >= b; i--)
 #define vi vector<int>
 #define vs vector<string>
 #define pii pair<int,int>
