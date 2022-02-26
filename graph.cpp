@@ -39,31 +39,67 @@ using namespace std;
 
 class Graph{
         public:
-        map<int,vector<int>>adj;
-        map<int,bool> visited;
-        map<int,int> color;
+//        map<int,vector<int>>adj;
+//        map<int,bool> visited;
+//        map<int,int> color;
+        vector<vector<int>> adj;
+        vector<bool> visited;
+        vector<int> color;
+        int n;
+        Graph(int x =1){
+                n = x;
+                adj.resize(n+1);
+                visited.resize(n+1,false);
+                color.resize(n+1,-1);
+        }
 
-        bool isBipartite(int a);
 
         void addEdge(int f, int t);
 
         void dfs(int a);
+        void dfs_main(int a);
 
         void bfs(int b);
+        void multibfs(vector<int>& v);
+        void clr(int x);
 };
+
+void Graph::clr(int x= 1){
+        n = x;
+        adj.resize(n+1);
+        visited.resize(n+1,false);
+        color.resize(n+1,-1);
+}
+void Graph::multibfs(vector<int>& v){
+        visited.clear();
+        visited.resize(n+1,false);
+        queue<int> q;
+        for(auto t: v){
+                //cout<<t<<" ";
+                q.push(t);
+                visited[t] = true;
+        }
+        while(q.size() != 0){
+                int s = q.front();
+                q.pop();
+                for(auto t: adj[s]){
+                        if(visited[t]) continue;
+                        visited[t] = true;
+                        //cout<<t<<" ";
+                        q.push(t);
+                }
+        }
+
+        return;
+}
 
 
 void Graph:: addEdge(int f, int t){
         adj[f].pb(t);
-        visited[f] = false;
-        visited[t] = false;
-
-        color[f] = -1;
-        color[t] = -1;
         return;
 }
 
-void Graph::dfs(int a){
+void Graph::dfs_main(int a){
         visited[a] = true;
         //cout<<a<<" ";
         for(auto t : adj[a]){
@@ -73,10 +109,18 @@ void Graph::dfs(int a){
         return;
 }
 
+void Graph::dfs(int a){
+        visited.clear();
+        visited.resize(n+1,false);
+        dfs(a);
+        return;
+}
+
 void Graph::bfs(int b){
 
         queue<int> q;
-        for(auto &t: visited) t.second = false;
+        visited.clear();
+        visited.resize(n+1,false);
         visited[b] = true;
         //cout<<b<<" ";
         q.push(b);
@@ -94,27 +138,6 @@ void Graph::bfs(int b){
         return;
 }
 
-bool Graph:: isBipartite(int a = 1){
-                for(auto &t: visited) t.second = false;
-                queue<int> q;
-                q.push(a);
-                color[a] = 1;
-                visited[a] = true;
-                while(q.size() != 0){
-                        int last = q.front();
-                        q.pop();
-                        for(auto t: adj[last]){
-                                if(color[t] == -1) color[t] = color[last]==1?0:1;
-                                else if(color[t] == color[last]) return false;
-                                if(visited[t] != true){
-                                        visited[t] = true;
-                                        q.push(t);
-                                }
-                        }
-                }
-
-                return true;
-}
 
 void take(){
 }
