@@ -39,9 +39,6 @@ using namespace std;
 
 class Graph{
         public:
-//        map<int,vector<int>>adj;
-//        map<int,bool> visited;
-//        map<int,int> color;
         vector<vector<int>> adj;
         vector<bool> visited;
         vector<int> color;
