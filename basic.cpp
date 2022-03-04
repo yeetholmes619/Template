@@ -23,6 +23,8 @@ using namespace std;
 #define pii pair<int,int>
 #define mii map<int,int>
 #define mci map<char,int>
+//as seen on https://codeforces.com/profile/I_love_Tanya_Romanova 's template
+//in order to be able to use pre-defined variables in STL
 #define y0 sdkfaslhagaklsldk
 #define y1 aasdfasdfasdf
 #define yn askfhwqriuperikldjk
