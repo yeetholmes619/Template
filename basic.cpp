@@ -15,8 +15,8 @@ using namespace std;
 #define INF 1000000007
 #define pb push_back
 #define pf push_front
-#define fu(i,a,b) for(int i = a; i <= b; i++)
-#define fd(i,a,b) for(int i = a; i >= b; i--)
+#define FOR(i,a,b) for(int i = a; i <= b; i++)
+#define ROF(i,a,b) for(int i = a; i >= b; i--)
 #define vi vector<int>
 #define vpii vector<pair<int,int>>
 #define vs vector<string>
