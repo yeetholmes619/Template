@@ -9,7 +9,7 @@ using namespace std;
 #define RESET   "\033[0m"
 #define BR   "\033[1m\033[31m"      /* Bold Red */
 #define BG   "\033[1m\033[32m"      /* Bold Green */
-#define BB    "\033[1m\033[34m"      /* Bold Blue */
+#define BB   "\033[1m\033[34m"      /* Bold Blue */
 #define ll long long
 #define ld long double
 #define INF 1000000007
@@ -18,11 +18,14 @@ using namespace std;
 #define FOR(i,a,b) for(int i = a; i <= b; i++)
 #define ROF(i,a,b) for(int i = a; i >= b; i--)
 #define vi vector<int>
+#define vvi vector<vectort<int>>
 #define vpii vector<pair<int,int>>
-#define vs vector<string>
 #define pii pair<int,int>
 #define mii map<int,int>
 #define mci map<char,int>
+template <typename T>
+using matrix = vector<vector<T>>;
+
 //as seen on https://codeforces.com/profile/I_love_Tanya_Romanova 's template
 //in order to be able to use pre-defined variables in STL
 #define y0 sdkfaslhagaklsldk
@@ -32,13 +35,13 @@ using namespace std;
 #define tm sdfjahlfasfh
 #define lr asgasgash
 #define norm asdfasdgasdgsd
-#define sz(x) (int)(x.size())
 #define left asdgashgrketwjklrej
 #define have adsgagshdshfhds
 #define ends asdgahhfdsfshdshfd
 #define prev asdgSHJsfgsdfhdsh
+
 #define umap unordered_map
-#define cinarr(a) for(auto &zz:a)cin>>zz
+#define sz(x) (int)(x.size())
 #define mp make_pair
 #define allvec(v) v.begin(), v.end()
 #define int long long
@@ -78,6 +81,7 @@ template<typename T> // cout << vector<T>
 ostream& operator<<(ostream &ostream, const vector<T> &c) { for (auto &it : c) cout << it << " "; return ostream; }
  
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\DEBUG/\/\/\/\/\/\/\/\/\/\/\/\///\/\/
+void __print(int32_t x) {cerr << x;}
 void __print(long x) {cerr << x;}
 void __print(long long x) {cerr << x;}
 void __print(unsigned x) {cerr << x;}
@@ -126,7 +130,7 @@ int32_t main() {
 		//cout << "Case #" << i << ": ";
 		solve();
 	}
-#ifdef DEBUG
+#ifdef YEET
     cerr<<"Execution Time: "<<timedif(time0,curtime)*1e-9<<" sec\n";
 #endif
 }
