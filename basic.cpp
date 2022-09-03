@@ -18,7 +18,7 @@ using namespace std;
 #define FOR(i,a,b) for(int i = a; i <= b; i++)
 #define ROF(i,a,b) for(int i = a; i >= b; i--)
 #define vi vector<int>
-#define vvi vector<vectort<int>>
+#define vvi vector<vector<int>>
 #define vpii vector<pair<int,int>>
 #define pii pair<int,int>
 #define mii map<int,int>
