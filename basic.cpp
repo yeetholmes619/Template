@@ -133,4 +133,5 @@ int32_t main() {
 #ifdef YEET
     cerr<<"Execution Time: "<<timedif(time0,curtime)*1e-9<<" sec\n";
 #endif
+    return 0;
 }
