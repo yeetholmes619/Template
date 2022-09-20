@@ -104,6 +104,6 @@ int rand(int a,int b){
         return a + rand()%(b-a+1);
 }
 
-int32_t main(int argc, char* argv[]){
+int32_t main(int32_t argc, char* argv[]){
         srand(atoi(argv[1]));
 }
