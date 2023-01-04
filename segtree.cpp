@@ -114,7 +114,7 @@ class segtree{
         function<T(T,T)> combine;
         T Neutral;
         public:
-        segtree(vector<T> inputVector,T Neutral, function<T(T,T)> &&combine = [&](T a, T b)->T{return a+b;}){
+        segtree(vector<T> inputVector,T Neutral, function<T(T,T)> &&combine = [](T a, T b)->T{return a+b;}){
                 n = inputVector.size();
                 Tree.assign(2*n,Neutral);
                 this->Neutral = Neutral;
