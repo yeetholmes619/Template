@@ -67,8 +67,8 @@ int32_t main() {
 	cin >> t;
 	for(int i = 1 ; i <= t; i++) {
 		//cout << "Case #" << i << ": ";
+        debug(i);
 		solve();
-        debug(t);
 	}
 #ifdef YEET
     cerr<<"Execution Time: "<<timedif(time0,curtime)*1e-9<<" sec\n";
