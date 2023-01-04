@@ -7,7 +7,7 @@ int binsearch(vector<int> v, int st, int en, int x){
         if(x < v[mid]) return binsearch(v,st,mid-1,x);
         else return binsearch(v,mid+1,en,x);
 }
-//Nor's method a.k.a (l,r) method
+//Nor's method
 /*
 so here we basically we end our search with l being in last true
 ans r being in first false, this method helps a lot cuz the last true
