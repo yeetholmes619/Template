@@ -23,6 +23,7 @@ using namespace std;
 #define ROF(i,a,b) for(int i = a; i >= b; i--)
 #define vi vector<int>
 #define pii pair<int,int>
+#define vpii vector<pair<int,int>>
 template <typename T>
 using matrix = vector<vector<T>>;
 
