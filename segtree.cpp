@@ -110,11 +110,13 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 template<class T>
 class segtree{
         int n;
-        vector<T> Tree;
-        function<T(T,T)> combine;
+        std::vector<T> Tree;
+        std::function<T(T,T)> combine;
         T Neutral;
         public:
-        segtree(vector<T> inputVector,T Neutral, function<T(T,T)> &&combine = [](T a, T b)->T{return a+b;}){
+        segtree(const vector<T>& inputVector,
+                        const T& Neutral, 
+                        const std::function<T(T,T)> &combine = [](T a, T b)->T{return a+b;}){
                 n = inputVector.size();
                 Tree.assign(2*n,Neutral);
                 this->Neutral = Neutral;
