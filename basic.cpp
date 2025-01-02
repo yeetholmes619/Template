@@ -9,18 +9,12 @@
 #endif
 #define curtime             chrono::high_resolution_clock::now()
 #pragma GCC optimize("Ofast")
-#pragma GCC target("avx,avx2,fma")
 #define timedif(start,end)  chrono::duration_cast<chrono::nanoseconds>(end - start).count()
 using namespace std;
-#define ll long long
-#define ld long double
-#define INF LLONG_MAX
 #define pb push_back
 #define pf push_front
 #define popb pop_back
 #define popf pop_front
-#define FOR(i,a,b) for(int i = a; i <= b; i++)
-#define ROF(i,a,b) for(int i = a; i >= b; i--)
 #define vi vector<int>
 #define pii pair<int,int>
 #define vpii vector<pair<int,int>>
@@ -28,7 +22,6 @@ template <typename T>
 using matrix = vector<vector<T>>;
 
 #define SZ(x) (int)(x.size())
-#define mp make_pair
 #define allvec(v) v.begin(), v.end()
 #define int long long
 #define output(value) cout << value << "\n"
@@ -57,6 +50,7 @@ void take(){
 
 void solve(){
         take();
+
 }
 
 
