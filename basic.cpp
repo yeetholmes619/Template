@@ -22,7 +22,6 @@ using matrix = std::vector<std::vector<T>>;
 
 #define SZ(x) (int)(x.size())
 #define allvec(v) v.begin(), v.end()
-#define int long long
 #define output(value) std::cout << value << "\n"
 const int mod1 = 1000000007;
 const int mod2 = 998244353;
