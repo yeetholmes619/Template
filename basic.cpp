@@ -35,11 +35,59 @@ std::istream& operator>>(std::istream &istream, std::vector<T> &v)
 	return istream;
 }
  
-template<typename T1, typename T2> // std::cout << pair<T1, T2>
+template<class T1, class T2> // std::cout << pair<T1, T2>
 std::ostream& operator<<(std::ostream &ostream, const std::pair<T1, T2> &p) { return (ostream << p.first << " " << p.second); }
-template<typename T> // std::cout << vector<T>
-std::ostream& operator<<(std::ostream &ostream, const std::vector<T> &c) { for (auto &it : c) ostream << it << " "; return ostream; }
+
+// Overload for std::array
+template<class T, size_t N>
+std::ostream& operator<<(std::ostream& os, const std::array<T,N>& c){
+	for(const auto &it : c){
+		os << it <<" ";
+	}
+	return os;
+}
+// Overload for std::vector
+template <class T>
+std::ostream& operator<<(std::ostream& os, const std::vector<T>& c) {
+    for (const auto& it : c) os << it << " ";
+    return os;
+}
  
+namespace  stressers{
+	std::mt19937 rng_int(std::chrono::steady_clock::now().time_since_epoch().count());
+	std::mt19937_64 rng_ll(std::chrono::steady_clock::now().time_since_epoch().count());
+	
+	template<class Integer>
+	Integer rng(Integer L, Integer R){
+	//inclusive
+		return std::uniform_int_distribution<Integer>(L,R)(rng_ll);
+	}
+	template<class RandomIt>
+	void shuffle(RandomIt first, RandomIt second){
+		std::shuffle(first,second,rng_int);
+	}
+	std::vector<int> permutation(size_t n,int start = 1){
+		std::vector<int> v(n);
+		std::iota(v.begin(),v.end(),start);
+		shuffle(v.begin(),v.end());
+		return v;
+	}
+	template<class T>
+	std::vector<T> rvg(size_t n, T L, T R){
+		std::vector<T> v(n);
+		for(auto& x : v){
+			x = rng(L,R);
+		}
+		return v;
+	}
+	std::string rsg(size_t n, char L, char R){
+		std::string s(n,'a');
+		for(auto& x : s){
+			x = char(L + rng(0,R-L));
+		}
+		return s;
+	}
+};
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\GLOBAL VARIABLES/\/\/\/\/\/\/\/\/\/\/\/\///\/\/
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\///\/\/\/\/\/\/
@@ -50,6 +98,13 @@ void solve(){
         take();
 
 }
+void stress(){
+	using namespace stressers;
+	for(int T_ = 0; T_ <= 1000; T_++){
+
+	}
+	output("ALL GOOD");
+}
 
 
 int32_t main() {
@@ -57,11 +112,19 @@ int32_t main() {
     std::cin.tie(NULL);
     auto time0 = curtime;
 	int t = 1;
+#ifndef STRESS_YEET
 	std::cin >> t;
+#endif
+	
 	for(int i = 1 ; i <= t; i++) {
 		//std::cout << "Case #" << i << ": ";
         debug(i);
+#ifndef STRESS_YEET
 		solve();
+#endif
+#ifdef STRESS_YEET
+		stress();
+#endif
 	}
 #ifdef YEET
     std::cerr << "Execution Time: " << timedif(time0,curtime)*1e-9 << " sec\n";
