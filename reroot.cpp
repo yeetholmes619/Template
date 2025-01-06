@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/1324/submission/240131453
 namespace reroot {
     const auto exclusive = [](const auto& a, const auto& base, const auto& merge_into, int vertex) {
         int n = (int)a.size();
