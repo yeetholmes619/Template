@@ -25,6 +25,12 @@ using matrix = std::vector<std::vector<T>>;
 #define output(value) std::cout << value << "\n"
 const int mod1 = 1000000007;
 const int mod2 = 998244353;
+template<class T, size_t N>
+std::istream& operator>>(std::istream& istream, std::array<T,N>& v){
+	for(auto &it : v)
+		istream >> it;
+	return istream;
+}
 template<typename T1, typename T2> // std::cin >> pair<T1, T2>
 std::istream& operator>>(std::istream &istream, std::pair<T1, T2> &p) { return (istream >> p.first >> p.second); } 
 template<typename T> // std::cin >> vector<T>
