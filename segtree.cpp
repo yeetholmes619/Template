@@ -114,7 +114,7 @@ class segtree{
         std::function<T(T,T)> combine;
         T Neutral;
         public:
-        segtree(const vector<T>& inputVector,
+        segtree(const std::vector<T>& inputVector,
                         const T& Neutral, 
                         const std::function<T(T,T)> &combine = [](T a, T b)->T{return a+b;}){
                 n = inputVector.size();
@@ -129,18 +129,19 @@ class segtree{
                 }
         }
         void update(int index, T val){
-                for(Tree[index += n] = val; index > 0; index>>=1){
-                        Tree[index>>1] = combine(Tree[index],Tree[index^1]);
+                for(Tree[index += n] = val; index>>=1;){
+                        Tree[index] = combine(Tree[index<<1],Tree[index<<1|1]);
                 }
         }
         
         T query(int l, int r){
-                T ans = Neutral;
+                T ansl = Neutral;
+                T ansr = Neutral;
                 for(l += n, r += n; l < r; l>>=1,r>>=1){
-                        if(l&1) ans = combine(ans,Tree[l++]);
-                        if(r&1) ans = combine(Tree[--r],ans);
+                        if(l&1) ansl = combine(ansl,Tree[l++]);
+                        if(r&1) ansr = combine(Tree[--r],ansr);
                 }
-                return ans;
+                return combine(ansl,ansr);
         }
 };
 
