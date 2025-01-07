@@ -93,6 +93,22 @@ namespace  stressers{
 		}
 		return s;
 	}
+	std::vector<std::array<int,2>> tree_generator(size_t n){
+		std::vector<std::array<int,2>> edges;
+		auto names = permutation(n);
+		for(int i = 2; i <= n; i++){
+			edges.pb({rng(1,i-1),i});
+		}
+		shuffle(edges.begin(),edges.end());
+		for(auto& [u,v] : edges){
+			u = names[u-1];
+			v = names[v-1];
+			if(rng(0,1)){
+				std::swap(u,v);
+			}
+		}
+		return edges;
+	}
 };
 //\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\GLOBAL VARIABLES/\/\/\/\/\/\/\/\/\/\/\/\///\/\/
 
