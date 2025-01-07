@@ -2,7 +2,7 @@
 //https://github.com/yeetholmes619/Template.git
 #include <bits/stdc++.h>
 #ifdef DEBUG
-#include "debug.h"
+#include "debug_better.h"
 #endif
 #ifndef DEBUG
 #define debug(args...)
