@@ -82,6 +82,44 @@ int find(vector<int> v, int x){
         if(ind == (int)v.size() || v[ind] != x) return (int)v.size();
         else return ind;
 }
+
+namespace multidimension{
+        using big  = long long;
+        using pair = std::array<big,2>;
+        pair find_first_false(pair start, pair end, auto&& f){
+                start[0]--;
+                start[1]--;
+                end[0]++;
+                end[1]++;
+                debug(start,end);
+                while(end[0] - start[0] > 1 || end[1] - start[1] > 1){
+                        pair mid =  {std::midpoint(start[0],end[0]),std::midpoint(start[1],end[1])};
+                        if(end[0] - start[0] == 1)
+                                mid[0] = end[0];
+                        if(end[1] - start[1] == 1)
+                                mid[1] = end[1];
+                        debug(start,end,mid);
+                        auto [first,second] = f(mid);
+                        debug(start,end,first,second,mid);
+                        if(end[0]-start[0] > 1){
+                                if(first){
+                                        start[0] = mid[0];
+                                }else{
+                                        end[0] = mid[0];
+                                }
+                        }
+                        if(end[1] - start[1] > 1){
+                                if(second ){
+                                        start[1] = mid[1];
+                                }else{
+                                        end[1] = mid[1];
+                                }
+                        }
+                }
+                return end;
+
+        }
+}
 int main(){
         int t;
         cin>>t;
