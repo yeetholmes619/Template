@@ -1,3 +1,4 @@
+//https://judge.yosupo.jp/submission/263705
 struct Lca {
 	static constexpr int K = 20;
 	int n{};
