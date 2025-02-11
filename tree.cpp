@@ -107,4 +107,21 @@ struct Tree {
         return tin[x] <= tin[y] && tout[x] >= tout[y];
     }
 };
- 
+/*
+ * example of HLD being used to find max in a path.
+ * 
+            seg.modify(T.tin[x], y);
+ * while (T.head[x] != T.head[y]){
+                if (T.d[T.head[x]] < T.d[T.head[y]]){
+                    swap(x, y);
+                }
+                int g = T.head[x];
+                ans = max(ans, seg.query(T.tin[g], T.tin[x]+1));
+                x = T.par[g];
+            }
+            
+            if (T.d[x] > T.d[y]){
+                swap(x, y);
+            }
+ *
+*/
