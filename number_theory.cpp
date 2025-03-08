@@ -1,4 +1,37 @@
 //Author = Anirudh Srikanth (yeetholmes619) [B20CS006]
+const int N = 10'000'000;
+std::vector<int> lp(N+1);
+std::vector<int> pr;
+void sieve(){
+	for (int i=2; i <= N; ++i) {
+	    if (lp[i] == 0) {
+		lp[i] = i;
+		pr.push_back(i);
+	    }
+	    for (int j = 0; i * pr[j] <= N; ++j) {
+		lp[i * pr[j]] = pr[j];
+		if (pr[j] == lp[i]) {
+		    break;
+		}
+	    }
+	}
+}
+std::vector<std::array<int,2>> prime_factorize(int x){
+	std::vector<std::array<int,2>> ans;
+	while(x != 1){
+		int cnt = 0;
+		int curr_spf = lp[x];
+		while(x%curr_spf == 0){
+			x /= curr_spf;
+			cnt++;
+		}
+		ans.pb({curr_spf,cnt});
+	}
+	return ans;
+}
+
+
+
 unsigned long long power(unsigned long long x,
                                   int y, int p)
 {
