@@ -1,4 +1,46 @@
 //Author = Anirudh Srikanth (yeetholmes619) [B20CS006]
+// O(Nlog(log(N)))
+const int N = 1e6 + 1;
+std::bitset<N> is_prime;
+std::vector<int> primes;
+void build() {
+    is_prime.set();
+    is_prime[0] = is_prime[1] = 0;
+
+    primes.push_back(2);
+    for (int i = 4; i < N; i += 2) 
+        is_prime[i] = 0;
+
+    for (int i = 3; i * i < N; i += 2)
+        if (is_prime[i])
+            for (int j = i * i; j < N; j += i * 2)
+                is_prime[j] = 0;
+
+    for (int i = 3; i < N; i += 2)
+        if (is_prime[i])
+            primes.push_back(i);
+}
+
+using big = long long;
+// O(sqrt(n) / log(sqrt(n)))
+std::vector<std::array<big, 2>> prime_factors(big n) {
+    if (primes.empty()) build();
+
+	std::vector<std::array<big, 2>> pfs;
+    for (const big& x : primes) {
+        if (x * x > n) break;
+        if (n % x) continue;
+        pfs.push_back({x, 0});
+        while (n % x == 0) {
+            n /= x;
+            pfs.back()[1]++;
+        }
+    }
+    if (n != 1) pfs.push_back({n, 1});
+
+    return pfs;
+}
+
 const int N = 10'000'000;
 std::vector<int> lp(N+1);
 std::vector<int> pr;
