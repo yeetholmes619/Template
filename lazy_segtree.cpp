@@ -12,22 +12,22 @@
 *
 */
 template <class Base,
-          class Node,
-          class Update,
-          class MakeNode,
-          class CombineNodes,
-          class ApplyUpdate,
-          class ComposeUpdates = std::nullptr_t,
-          class CheckLazy = std::nullptr_t>
+class Node,
+class Update,
+class MakeNode,
+class CombineNodes,
+class ApplyUpdate,
+class ComposeUpdates = std::nullptr_t,
+class CheckLazy = std::nullptr_t>
 struct lazy_segtree {
     static constexpr bool is_lazy =
-        !std::is_same<ComposeUpdates, std::nullptr_t>::value;
+    !std::is_same<ComposeUpdates, std::nullptr_t>::value;
     static constexpr bool is_check_lazy = !std::is_same<CheckLazy, std::nullptr_t>::value;
 
-   public:
+public:
     template <typename... T>
     explicit lazy_segtree(int n, const Base& id_base, T... args)
-        : lazy_segtree(std::vector<Base>(n, id_base), args...) {}
+    : lazy_segtree(std::vector<Base>(n, id_base), args...) {}
     explicit lazy_segtree(const std::vector<Base>& v,
                           const Node& _id_node,
                           const MakeNode& _make_node,
@@ -37,13 +37,13 @@ struct lazy_segtree {
                           const ComposeUpdates& _compose_updates = nullptr,
                           const CheckLazy& _check_lazy = nullptr)
         : _n(int(v.size())),
-          make_node(_make_node),
-          combine(_combine),
-          id_node(_id_node),
-          apply_update(_apply_update),
-          id_update(_id_update),
-          compose_updates(_compose_updates),
-          check_lazy(_check_lazy) {
+        make_node(_make_node),
+        combine(_combine),
+        id_node(_id_node),
+        apply_update(_apply_update),
+        id_update(_id_update),
+        compose_updates(_compose_updates),
+        check_lazy(_check_lazy) {
         build(v);
     }
 
@@ -56,7 +56,7 @@ struct lazy_segtree {
         for (int i = 0; i < _n; i++) d[_n + i] = make_node(v[i], i);
         for (int i = _n - 1; i >= 1; i--) update(i);
     }
-    
+
     void set(int p, Node x) {
         p += _n;
         if constexpr (is_lazy)
@@ -100,9 +100,9 @@ struct lazy_segtree {
         // }
         // return sm;
     }
-    
+
     Node all_query() const { return query(0, _n); }
-    
+
     void update(int p, Update f) {
         p += _n;
         if constexpr (is_lazy)
@@ -110,7 +110,7 @@ struct lazy_segtree {
         d[p] = apply_update(f, d[p]);
         for (int i = 1; i <= log; ++i) update(p >> i);
     }
-    
+
     void update(int l, int r, Update f) {
         if (l == r) return;
         l += _n, r += _n;
@@ -154,15 +154,15 @@ struct lazy_segtree {
 
         l += _n;
         int r = 2 * _n;
-        
+
         const int l_ctz = __builtin_ctz(l);
         const int r_ctz = __builtin_ctz(r);
-        
+
         if constexpr (is_lazy) {
             for (int i = log; i > l_ctz; --i) push(l >> i);
             for (int i = log; i > r_ctz; --i) push((r - 1) >> i);
         }
-        
+
         Node sm = id_node;
 
         int i = -1;
@@ -180,7 +180,7 @@ struct lazy_segtree {
                 sm = c;
             }
         }
-        
+
         if (i == -1)
             for (int h = lg - 1; h >= 0; --h) {
                 int R = r >> h;
@@ -195,7 +195,7 @@ struct lazy_segtree {
                     sm = c;
                 }
             }
-        
+
         if (i == -1) return _n;
         while (i < _n) {
             push(i);
@@ -216,15 +216,15 @@ struct lazy_segtree {
         if (r == 0) return 0;
         r += _n;
         int l = _n;
-       
+
         const int l_ctz = __builtin_ctz(l);
         const int r_ctz = __builtin_ctz(r);
-        
+
         if constexpr (is_lazy) {
             for (int i = log; i > l_ctz; --i) push(l >> i);
             for (int i = log; i > r_ctz; --i) push((r - 1) >> i);
         }
-        
+
         Node sm = id_node;
         int i = -1;
         int lg = std::__lg(r - l) + 1;
@@ -268,7 +268,7 @@ struct lazy_segtree {
         return i + 1 - _n;
     }
 
-   private:
+private:
     int _n, log;
     std::vector<Node> d;
     std::vector<Update> lz;

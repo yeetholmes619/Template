@@ -13,7 +13,7 @@ T inverse(T a, T m) {
 
 template <typename T>
 class Modular {
- public:
+public:
   using Type = typename std::decay<decltype(T::value)>::type;
 
   constexpr Modular() : value() {}
@@ -76,7 +76,7 @@ class Modular {
   template <typename V, typename U>
   friend V& operator>>(V& stream, Modular<U>& number);
 
- private:
+private:
   Type value;
 };
 
